@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>七巧板</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		#canvas1,#canvas2 {
+			display: block;
+			margin: 50px auto;
+		}
+	</style>
+</head>
+<body>
+<canvas id="canvas1" width="500" height="500"></canvas>
+<canvas id="canvas2" width="500" height="500"></canvas>
+
+<script type="text/javascript">
+	var tangram = [
+	{p:[{x:0,y:0},{x:250,y:250},{x:0,y:500},{x:0,y:0}],color:"rgb(102,196,206)"},
+	{p:[{x:0,y:0},{x:500,y:0},{x:250,y:250},{x:0,y:0}],color:"rgb(205,254,104)"},
+	{p:[{x:125,y:375},{x:250,y:500},{x:0,y:500},{x:125,y:375}],color:"rgb(246,143,205)"},
+	{p:[{x:125,y:375},{x:250,y:500},{x:375,y:375},{x:250,y:250},{x:125,y:375}],color:"rgb(166,150,194)"},
+	{p:[{x:250,y:250},{x:375,y:375},{x:375,y:125},{x:250,y:250}],color:"rgb(250,247,27)"},
+	{p:[{x:375,y:125},{x:500,y:0},{x:500,y:250},{x:375,y:375},{x:375,y:125}],color:"rgb(240,61,99)"},
+	{p:[{x:500,y:500},{x:250,y:500},{x:500,y:250},{x:500,y:500}],color:"rgb(248,201,40)"},
+	];
+
+	window.onload = function(){
+		var canvas = document.getElementById('canvas1');
+		var context = canvas.getContext("2d");
+
+		for (var i = 0; i < tangram.length; i++) {
+			draw(tangram[i],context);
+		}
+	}
+
+	function draw(piece,context){
+		context.beginPath();
+			context.moveTo(piece.p[0].x,piece.p[0].y);
+			for (var i = 1; i < piece.p.length; i++) {
+				context.lineTo(piece.p[i].x,piece.p[i].y);
+			}
+		context.closePath();
+
+		context.fillStyle = piece.color;
+		context.fill();
+	}
+</script>
+<script type="text/javascript">
+	var canvas = document.getElementById('canvas2');
+	var context = canvas.getContext("2d");
+
+	/*蓝色大三角*/
+	context.beginPath();
+		context.moveTo(0,0);
+		context.lineTo(250,250);
+		context.lineTo(0,500);
+		context.lineTo(0,0);
+		context.strokeStyle = "rgb(102,196,206)";
+		context.stroke();
+		context.fillStyle = "rgb(102,196,206)";
+		context.fill();
+	context.closePath();
+
+	/*绿色大三角*/
+	context.beginPath();
+		context.moveTo(0,0);
+		context.lineTo(500,0);
+		context.lineTo(250,250);
+		context.lineTo(0,0);
+		context.strokeStyle = "rgb(205,254,104)";
+		context.stroke();
+		context.fillStyle = "rgb(205,254,104)";
+		context.fill();
+	context.closePath();
+
+	/*粉色小三角*/
+	context.beginPath();
+		context.moveTo(125,375);
+		context.lineTo(250,500);
+		context.lineTo(0,500);
+		context.lineTo(125,375);
+		context.strokeStyle = "rgb(246,143,205)";
+		context.stroke();
+		context.fillStyle = "rgb(246,143,205)";
+		context.fill();
+	context.closePath();
+
+	/*紫色正方形*/
+	context.beginPath();
+		context.moveTo(125,375);
+		context.lineTo(250,500);
+		context.lineTo(375,375);
+		context.lineTo(250,250);
+		context.lineTo(125,375);
+		context.strokeStyle = "rgb(166,150,194)";
+		context.stroke();
+		context.fillStyle = "rgb(166,150,194)";
+		context.fill();		
+	context.closePath();
+
+	/*黄色小三角*/
+	context.beginPath();
+		context.moveTo(250,250);
+		context.lineTo(375,375);
+		context.lineTo(375,125);
+		context.lineTo(250,250);
+		context.strokeStyle = "rgb(250,247,27)";
+		context.stroke();
+		context.fillStyle = "rgb(250,247,27)";
+		context.fill();
+	context.closePath();
+
+	/*红色平行四边形*/
+	context.beginPath();
+		context.moveTo(375,125);
+		context.lineTo(500,0);
+		context.lineTo(500,250);
+		context.lineTo(375,375);
+		context.lineTo(375,125);
+		context.strokeStyle = "rgb(240,61,99)";
+		context.stroke();
+		context.fillStyle = "rgb(240,61,99)";
+		context.fill();	
+	context.closePath();
+
+	/*棕黄色小三角*/
+	context.beginPath();
+		context.moveTo(500,500);
+		context.lineTo(250,500);
+		context.lineTo(500,250);
+		context.lineTo(500,250*2);
+		context.strokeStyle = "rgb(248,201,40)";
+		context.stroke();
+		context.fillStyle = "rgb(248,201,40)";
+		context.fill();
+	context.closePath();
+</script>
+</body>
+</html>
